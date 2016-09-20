@@ -3,3 +3,5 @@ dist/
 .kubos-link.json
 kubos_sdk.egg-info/
 *.pyc
+.yotta.json
+venv/
