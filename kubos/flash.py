@@ -46,7 +46,6 @@ def execCommand(args, following_args):
         sys.stderr.
 
 """
-
     current_target = target.get_current_target()
     if current_target:
         project_name = project.get_project_name()
