@@ -12,6 +12,12 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+"""Flash a target board with a compiled binary.
+
+Todo:
+    * Complete documentation.
+    
+"""
 
 import os
 import sys
@@ -56,7 +62,10 @@ def flash_openocd(proj_exe_path, kubos_dir):
         kubos_dir (path): The path to the kubos-sdk.
     
     Returns:
-        None for success, raises CalledProcessError for failure.
+        None.
+    
+    Raises:
+        CalledProcessError.
     
     """
     if sys.platform.startswith('linux'):
@@ -84,7 +93,10 @@ def flash_dfu_util(proj_exe_path, kubos_dir):
         kubos_dir (path): The path to the kubos-sdk.
     
     Returns:
-        None for success, raises CalledProcessError for failure.
+        None.
+    
+    Raises:
+        CalledProcessError.
     
     """
     if sys.platform.startswith('linux'):
@@ -111,7 +123,10 @@ def flash_mspdebug(proj_exe_path, kubos_dir):
         kubos_dir (path): The path to the kubos-sdk.
     
     Returns:
-        None for success, raises CalledProcessError for failure.
+        None.
+    
+    Raises:
+        CalledProcessError.
     
     """
     if sys.platform.startswith('linux'):
