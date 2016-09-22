@@ -33,6 +33,20 @@ def addOptions(parser):
 
 
 def execCommand(args, following_args):
+"""Get the current target board and call the corresponding flash function.
+   
+   Args:
+        args (): 
+        following_args (): 
+    
+    Returns:
+        None.
+    
+    Raises:
+        sys.stderr.
+
+"""
+
     current_target = target.get_current_target()
     if current_target:
         project_name = project.get_project_name()
