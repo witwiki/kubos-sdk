@@ -49,6 +49,16 @@ def execCommand(args, following_args):
 
 
 def flash_openocd(proj_exe_path, kubos_dir):
+        """Create an OS specific path to openocd and openocd/flash.sh and run flash.sh.
+    
+    Args:
+        proj_exe_path (path): The path to the compiled project to be flashed.
+        kubos_dir (path): The path to the kubos-sdk.
+    
+    Returns:
+        None for success, raises CalledProcessError for failure.
+    
+    """
     if sys.platform.startswith('linux'):
         openocd_exe = os.path.join(kubos_dir, 'bin', 'linux', 'openocd')
         lib_path = os.path.join(kubos_dir, 'lib', 'linux')
@@ -67,6 +77,16 @@ def flash_openocd(proj_exe_path, kubos_dir):
 
 
 def flash_dfu_util(proj_exe_path, kubos_dir):
+    """Create an OS specific path to dfu_util and dfu_util/flash.sh and run flash.sh.
+    
+    Args:
+        proj_exe_path (path): The path to the compiled project to be flashed.
+        kubos_dir (path): The path to the kubos-sdk.
+    
+    Returns:
+        None for success, raises CalledProcessError for failure.
+    
+    """
     if sys.platform.startswith('linux'):
         dfu_util_exe = os.path.join(kubos_dir, 'bin', 'linux', 'dfu-util')
         lib_path = os.path.join(kubos_dir, 'lib', 'linux')
@@ -84,7 +104,7 @@ def flash_dfu_util(proj_exe_path, kubos_dir):
 
 
 def flash_mspdebug(proj_exe_path, kubos_dir):
-    """Create an OS specific path to MSPDebug and flash.sh and run command prog.
+    """Create an OS specific path to MSPDebug and mspdebug/flash.sh and run flash.sh.
     
     Args:
         proj_exe_path (path): The path to the compiled project to be flashed.
