@@ -84,6 +84,16 @@ def flash_dfu_util(proj_exe_path, kubos_dir):
 
 
 def flash_mspdebug(proj_exe_path, kubos_dir):
+    """Create an OS specific path to MSPDebug and flash.sh and run command prog.
+    
+    Args:
+        proj_exe_path (path): The path to the compiled project to be flashed.
+        kubos_dir (path): The path to the kubos-sdk.
+    
+    Returns:
+        None for success, raises CalledProcessError for failure.
+    
+    """
     if sys.platform.startswith('linux'):
         mspdebug_exe = os.path.join(kubos_dir, 'bin', 'linux', 'mspdebug')
         lib_path = os.path.join(kubos_dir, 'lib', 'linux')
