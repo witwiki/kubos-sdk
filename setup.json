@@ -18,34 +18,34 @@
         ]
     },
     "test_suite": "kubos.test",
-    "data_files": [
+    "package_data": [
         [
-            "/kubos",
+            "kubos",
             [
                 "eula.txt",
                 "module.json"
             ]
         ],
         [
-            "/kubos/utils",
+            "kubos/utils",
             [
                 "kubos/utils/getip.sh"
             ]
         ],
         [
-            "/kubos/flash/mspdebug",
+            "kubos/flash/mspdebug",
             [
                 "flash/mspdebug/flash.sh"
             ]
         ],
         [
-            "/kubos/flash/dfu_util",
+            "kubos/flash/dfu_util",
             [
                 "flash/dfu_util/flash.sh"
             ]
         ],
         [
-            "/kubos/flash/openocd",
+            "kubos/flash/openocd",
             [
                 "flash/openocd/flash.sh",
                 "flash/openocd/osxusb.py",
@@ -56,14 +56,14 @@
             ]
         ],
         [
-            "/kubos/flash/openocd/interface",
+            "kubos/flash/openocd/interface",
             [
                 "flash/openocd/interface/stlink-v2.cfg",
                 "flash/openocd/interface/stlink-v2-1.cfg"
             ]
         ],
         [
-            "/kubos/flash/openocd/target",
+            "kubos/flash/openocd/target",
             [
                 "flash/openocd/target/stm32f4x.cfg",
                 "flash/openocd/target/stm32f4x_stlink.cfg",
@@ -71,7 +71,7 @@
             ]
         ],
         [
-            "/kubos/bin/linux",
+            "kubos/bin/linux",
             [
                 "bin/linux/mspdebug",
                 "bin/linux/openocd",
@@ -79,7 +79,7 @@
             ]
         ],
         [
-            "/kubos/bin/osx",
+            "kubos/bin/osx",
             [
                 "bin/osx/openocd",
                 "bin/osx/mspdebug",
@@ -87,7 +87,7 @@
             ]
         ],
         [
-            "/kubos/lib/linux",
+            "kubos/lib/linux",
             [
                 "lib/linux/libmsp430.so",
                 "lib/linux/libudev.so.0",
@@ -96,7 +96,7 @@
             ]
         ],
         [
-            "/kubos/lib/osx",
+            "kubos/lib/osx",
             [
                 "lib/osx/libmsp430.dylib",
                 "lib/osx/libanalytics.dylib",
