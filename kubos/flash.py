@@ -36,8 +36,8 @@ def execCommand(args, following_args):
 """Get the current target board and call the corresponding flash function.
    
    Args:
-        args (): 
-        following_args (): 
+        args (str): Command line arguments.
+        following_args (str): Subcommand line arguments.
     
     Returns:
         None.
