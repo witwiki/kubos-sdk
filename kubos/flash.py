@@ -33,7 +33,7 @@ def addOptions(parser):
 
 
 def execCommand(args, following_args):
-"""Get the current target board and call the corresponding flash function.
+    """Get the current target board and call the corresponding flash function.
    
    Args:
         args (str): Command line arguments.
@@ -45,7 +45,7 @@ def execCommand(args, following_args):
     Raises:
         sys.stderr.
 
-"""
+    """
     current_target = target.get_current_target()
     if current_target:
         project_name = project.get_project_name()
@@ -68,7 +68,7 @@ def execCommand(args, following_args):
 
 
 def flash_openocd(proj_exe_path, kubos_dir):
-        """Create an OS specific path to openocd and openocd/flash.sh and run flash.sh.
+    """Create an OS specific path to openocd and openocd/flash.sh and run flash.sh.
     
     Args:
         proj_exe_path (path): The path to the compiled project to be flashed.
