@@ -12,6 +12,12 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+"""Prints the current version of the kubos-sdk and docker container.
+
+Note:
+Currently the container version is linked to the version of the pip module kubos-sdk.
+
+"""
 
 from pip.utils import ensure_dir, get_installed_version
 from options import parser
@@ -22,15 +28,30 @@ def addOptions(parser):
 
 
 def execCommand(args, following_args):
+    """Prints the current version of the kubos-sdk and docker container.
+
+    """
     print "KubOS-SDK:\t\t%s" % (get_kubos_sdk_version())
     print "KubOS-SDK Container:\t%s" % (get_container_tag())
 
 
 def get_kubos_sdk_version():
+    """Determine the current version of the kubos-sdk.
+
+    Returns:
+        str: pip version for success. None for failure.
+
+    """
     return get_installed_version('kubos-sdk')
 
 
 def get_container_tag():
+    """Determine the current version of the kubos-sdk docker container.
+
+    Returns: 
+        str: docker container repository tag for success. Error and pip version for failure.
+
+    """
     cli = container.get_cli()
     expected_ver = container.container_tag()
     found = False

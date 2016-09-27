@@ -34,14 +34,7 @@ def addOptions(parser):
 
 def execCommand(args, following_args):
     """Get the current target board and call the corresponding flash function.
-   
-   Args:
-        args (str): Command line arguments.
-        following_args (str): Subcommand line arguments.
-    
-    Returns:
-        None.
-    
+
     Raises:
         sys.stderr.
 
@@ -74,9 +67,6 @@ def flash_openocd(proj_exe_path, kubos_dir):
         proj_exe_path (path): The path to the compiled project to be flashed.
         kubos_dir (path): The path to the kubos-sdk.
     
-    Returns:
-        None.
-    
     Raises:
         CalledProcessError.
     
@@ -105,9 +95,6 @@ def flash_dfu_util(proj_exe_path, kubos_dir):
         proj_exe_path (path): The path to the compiled project to be flashed.
         kubos_dir (path): The path to the kubos-sdk.
     
-    Returns:
-        None.
-    
     Raises:
         CalledProcessError.
     
@@ -134,9 +121,6 @@ def flash_mspdebug(proj_exe_path, kubos_dir):
     Args:
         proj_exe_path (path): The path to the compiled project to be flashed.
         kubos_dir (path): The path to the kubos-sdk.
-    
-    Returns:
-        None.
     
     Raises:
         CalledProcessError.

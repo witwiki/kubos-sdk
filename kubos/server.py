@@ -12,6 +12,16 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+"""Interact with the debug (gdb) server.
+
+    Example:
+        kubos server <start, stop, restart, status>
+   
+    Attributes:
+        server_running (str): Running.
+        server_stopped (str): Stopped.
+
+"""
 
 import os
 import psutil
@@ -27,10 +37,22 @@ server_running = 'Running'
 server_stopped = 'Stopped'
 
 def addOptions(parser):
+    """Add an argument to the argument parser.
+
+    Args:
+        parser (argparse.ArgumentParser): The argument parser to add an argument to.
+
+    """
     parser.add_argument('action', nargs='?', help='Interact directly with the gdb server. Options: start, stop, restart or status')
 
 
 def execCommand(args, following_args):
+    """Interact with the gdb for remote debugging. 
+   
+    Args:
+        args (argparse.Namespace): Command line arguments.
+    
+    """
     if args.action == 'start':
         start_server()
     elif args.action == 'status':
@@ -42,6 +64,12 @@ def execCommand(args, following_args):
 
 
 def start_server():
+    """Start a board specific debugger service.
+
+    Raises: 
+        sys.stderr.
+
+    """
     current_target = target.get_current_target()
     flash_dir, lib_dir, exe_dir = get_dirs()
     project.add_ld_library_path(lib_dir)
@@ -68,6 +96,13 @@ def start_server():
 
 
 def get_server_status():
+    """Determine the current status of the debugger service.
+
+    Returns:
+        server_running (str): Status for running service.
+        server_stopped (str): Status for stopped service.
+
+    """
     flash_util = get_flash_util()
     process = get_server_process(flash_util)
     if process:
@@ -77,10 +112,16 @@ def get_server_status():
 
 
 def print_server_status():
+    """Print the current status of the debugger service.
+
+    """
     print 'Kubos GDB Server status: %s' % get_server_status()
 
 
 def stop_server():
+    """Stop a board specific debugger service.
+
+    """
     flash_util = get_flash_util()
     process = get_server_process(flash_util)
     if process:
@@ -91,11 +132,23 @@ def stop_server():
 
 
 def restart_server():
+    """Restart the debugger utility.
+
+    """
     stop_server()
     start_server()
 
 
 def get_server_process(util_name):
+    """Retrieve a process by name.
+
+    Args:
+        util_name (str): The process name.
+
+    Returns:
+        proc (psutil.Process): The process for success, none for failure.
+
+    """
     full_list = psutil.process_iter()
     for proc in full_list:
         try:
@@ -107,6 +160,15 @@ def get_server_process(util_name):
 
 
 def get_flash_util():
+    """Determine the appropriate flash utility based on the current target.
+
+    Returns:
+        flash_util (str): Board specific flash utility name.
+
+    Raises: 
+        sys.stderr.
+
+    """
     current_target = target.get_current_target()
     if not current_target:
         print >>sys.stderr, 'No Target is currently set. Cannot start the gdb server'
@@ -119,6 +181,14 @@ def get_flash_util():
 
 
 def get_dirs():
+    """Create an OS specific path to the kubos-sdk flash, library, and binary directories.
+
+    Returns:
+        flash_dir (path): OS specific path to the kubos-sdk flash directory.
+        lib_dir (path): OS specific path to the kubos-sdk flash libraries.
+        bin_dir (path): OS specific path to the kubos-sdk flash executables.
+
+    """
     kubos_dir = resource_filename(__name__, '')
     flash_dir = os.path.join(kubos_dir, 'flash')
     if sys.platform.startswith('linux'):
